@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary" text-center>
+    <ion-title>Top 20 :: Últimas Noticias :: México</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- // ------------------------opcion 1------------------------// -->
+  <!-- <ion-list>
+    <ion-item *ngFor="let article of (articles | async); let i = index"
+              [attr.data-index]="i"
+              [routerLink]="['/', 'news', i]">
+      <ion-avatar slot="start">
+        <ion-img [src]="article.urlToImage"></ion-img>
+      </ion-avatar>
+      <ion-label>{{i}} : {{article.title}}</ion-label>
+    </ion-item>
+  </ion-list> -->
+  <!-- // ------------------------opcion 2------------------------// -->
+  <ion-list>
+    <ion-item *ngFor="let article of articles; let i = index"
+              [attr.data-index]="i"
+              [routerLink]="['/', 'news', i]">
+      <ion-avatar slot="start">
+        <ion-img *ngIf="article.urlToImage" [src]="article.urlToImage"></ion-img>
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h3 [innerHTML]="label(article.title)[0]"></h3>
+        <h5 [innerHTML]="label(article.title)[1]"></h5>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

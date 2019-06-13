@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{press}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>{{ title }}</h1>
+        <h6><span *ngIf="detail.author">por: {{ detail.author }}</span> <span class="date">{{ detail.publishedAt }}</span></h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-justify">
+        <img *ngIf="detail.urlToImage" [src]="detail.urlToImage" class="info-img">
+        <div padding>
+          <p>{{ detail.description }}</p>
+          <p>{{ content }}</p>
+          <ion-button expand="full" (click)="openModal(detail.url)">leer la nota completa</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<!-- {{ detail | json }} -->
+
+
+<!-- <ion-card>
+  <ion-card-header>
+    <ion-card-title>{{detail.title}}</ion-card-title>
+    <ion-card-subtitle>{{detail.description}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content text-center>
+
+    <ion-item lines="none">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label text-wrap>{{ detail.publishedAt }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-text color="secondary">
+        <p text-wrap>{{ detail.content }}</p>
+      </ion-text>
+    </ion-item>
+  </ion-card-content>
+</ion-card> -->
